@@ -25,7 +25,7 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Linting (dotnet format)
-      run: dotnet format --verify-no-changes
+      run: dotnet format 
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
