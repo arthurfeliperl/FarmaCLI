@@ -19,7 +19,7 @@ Idosos, doentes crónicos e cuidadores que necessitam de uma lista de consulta r
 
 ## Como Instalar e Executar
 1. Garante que tens o [.NET 8 SDK](https://dotnet.microsoft.com/download) instalado.
-2. Clona o repositório: `git clone [COLA_AQUI_O_TEU_LINK_DO_GITHUB]`
+2. Clona o repositório: `git clone https://github.com/arthurfeliperl/FarmaCLI/`
 3. Entra na pasta do projeto: `cd FarmaCLI/FarmaCLI.App`
 4. Executa a aplicação: `dotnet run`
 
