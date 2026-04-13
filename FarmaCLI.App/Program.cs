@@ -11,7 +11,7 @@ while (true)
     Console.WriteLine("2. Listar Remédios");
     Console.WriteLine("3. Sair");
     Console.Write("Escolha uma opção: ");
-    
+
     var option = Console.ReadLine();
 
     if (option == "1")
@@ -20,7 +20,7 @@ while (true)
         var name = Console.ReadLine() ?? "";
         Console.Write("Horário (ex: 08:00): ");
         var time = Console.ReadLine() ?? "";
-        
+
         try
         {
             manager.AddMedication(name, time);
