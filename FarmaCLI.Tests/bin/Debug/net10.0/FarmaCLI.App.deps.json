@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "FarmaCLI.App/1.0.0": {
+        "runtime": {
+          "FarmaCLI.App.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FarmaCLI.App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

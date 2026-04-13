@@ -1,0 +1,14 @@
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\bin\Debug\net8.0\FarmaCLI.App.exe
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\bin\Debug\net8.0\FarmaCLI.App.deps.json
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\bin\Debug\net8.0\FarmaCLI.App.runtimeconfig.json
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\bin\Debug\net8.0\FarmaCLI.App.dll
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\bin\Debug\net8.0\FarmaCLI.App.pdb
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\FarmaCLI.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\FarmaCLI.App.AssemblyInfoInputs.cache
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\FarmaCLI.App.AssemblyInfo.cs
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\FarmaCLI.App.csproj.CoreCompileInputs.cache
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\FarmaCLI.App.dll
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\refint\FarmaCLI.App.dll
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\FarmaCLI.App.pdb
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\FarmaCLI.App.genruntimeconfig.cache
+C:\Users\arthu\Desktop\Bootcamp\FarmaCLI\FarmaCLI.App\obj\Debug\net8.0\ref\FarmaCLI.App.dll

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="FarmaCLI.App/FarmaCLI.App.csproj" />
+  <Project Path="FarmaCLI.Tests/FarmaCLI.Tests.csproj" />
+</Solution>
