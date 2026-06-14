@@ -33,13 +33,23 @@ while (true)
     }
     else if (option == "2")
     {
-        var meds = manager.GetMedications();
-        Console.WriteLine("\n--- Seus Remédios ---");
-        if (meds.Count == 0) Console.WriteLine("Nenhum remédio cadastrado.");
-        foreach (var med in meds) Console.WriteLine($"- {med}");
+        Console.WriteLine("\n--- Seus Remédios no Banco de Dados ---");
+        try
+        {
+            await using var cmdRead = dataSource.CreateCommand("SELECT Nome, Horario FROM Remedios;");
+            await using var reader = await cmdRead.ExecuteReaderAsync();
+            
+            bool temRemedio = false;
+            while (await reader.ReadAsync())
+            {
+                temRemedio = true;
+                Console.WriteLine($"- {reader.GetString(0)} (Horário: {reader.GetString(1)})");
+            }
+
+            if (!temRemedio) Console.WriteLine("Nenhum remédio cadastrado na nuvem.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Erro ao buscar no banco: {ex.Message}");
+        }
     }
-    else if (option == "3")
-    {
-        break;
-    }
-}
