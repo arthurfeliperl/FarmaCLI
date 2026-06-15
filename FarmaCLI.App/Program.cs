@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Npgsql; // Necessário para conectar ao PostgreSQL/Supabase
 using FarmaCLI.App;
 
 class Program
@@ -7,6 +8,12 @@ class Program
     static async Task Main(string[] args)
     {
         var manager = new MedicationManager();
+
+        // Puxa a string de conexão configurada na nuvem pelo GitHub Actions / Vercel / Render
+        string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "";
+
+        // Cria o dataSource próprio para a sua funcionalidade de listagem funcionar isolada
+        await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
         Console.WriteLine("=== FarmaCLI: Controle de Medicamentos ===");
         Console.WriteLine("Versão 1.0.0");
@@ -42,8 +49,8 @@ class Program
                 Console.WriteLine("\n--- Seus Remédios no Banco de Dados ---");
                 try
                 {
-                    // CORREÇÃO: Puxando o dataSource de dentro do manager
-                    await using var cmdRead = manager.dataSource.CreateCommand("SELECT Nome, Horario FROM Remedios;");
+                    // Agora usa o seu próprio dataSource criado ali em cima
+                    await using var cmdRead = dataSource.CreateCommand("SELECT Nome, Horario FROM Remedios;");
                     await using var reader = await cmdRead.ExecuteReaderAsync();
                     
                     bool temRemedio = false;
