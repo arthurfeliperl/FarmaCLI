@@ -1,45 +1,84 @@
-﻿using FarmaCLI.App;
+﻿using System;
+using System.Threading.Tasks;
+using Npgsql; // Necessário para conectar ao PostgreSQL/Supabase
+using FarmaCLI.App;
 
-var manager = new MedicationManager();
-
-Console.WriteLine("=== FarmaCLI: Controle de Medicamentos ===");
-Console.WriteLine("Versão 1.0.0");
-
-while (true)
+class Program
 {
-    Console.WriteLine("\n1. Adicionar Remédio");
-    Console.WriteLine("2. Listar Remédios");
-    Console.WriteLine("3. Sair");
-    Console.Write("Escolha uma opção: ");
-    
-    var option = Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        var manager = new MedicationManager();
 
-    if (option == "1")
-    {
-        Console.Write("Nome do Remédio: ");
-        var name = Console.ReadLine() ?? "";
-        Console.Write("Horário (ex: 08:00): ");
-        var time = Console.ReadLine() ?? "";
-        
-        try
+        // Puxa a string de conexão configurada na nuvem pelo GitHub Actions / Vercel / Render
+        string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "";
+
+        // Cria o dataSource próprio para a sua funcionalidade de listagem funcionar isolada
+        await using var dataSource = NpgsqlDataSource.Create(connectionString);
+
+        Console.WriteLine("=== FarmaCLI: Controle de Medicamentos ===");
+        Console.WriteLine("Versão 1.0.0");
+
+        while (true)
         {
-            manager.AddMedication(name, time);
-            Console.WriteLine("✅ Remédio adicionado com sucesso!");
+            Console.WriteLine("\n1. Adicionar Remédio");
+            Console.WriteLine("2. Listar Remédios");
+            Console.WriteLine("3. Sair");
+            Console.Write("Escolha uma opção: ");
+            
+            var option = Console.ReadLine();
+
+            if (option == "1")
+            {
+                Console.Write("Nome do Remédio: ");
+                var name = Console.ReadLine() ?? "";
+                Console.Write("Horário (ex: 08:00): ");
+                var time = Console.ReadLine() ?? "";
+                
+                try
+                {
+                    manager.AddMedication(name, time);
+                    Console.WriteLine("✅ Remédio adicionado com sucesso!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"❌ Erro: {ex.Message}");
+                }
+            }
+            else if (option == "2")
+            {
+                Console.WriteLine("\n--- Seus Remédios no Banco de Dados ---");
+                try
+                {
+                    // Agora usa o seu próprio dataSource criado ali em cima
+                    await using var cmdRead = dataSource.CreateCommand("SELECT Nome, Horario FROM Remedios;");
+                    await using var reader = await cmdRead.ExecuteReaderAsync();
+                    
+                    bool temRemedio = false;
+                    while (await reader.ReadAsync())
+                    {
+                        temRemedio = true;
+                        Console.WriteLine($"- {reader.GetString(0)} (Horário: {reader.GetString(1)})");
+                    }
+
+                    if (!temRemedio) 
+                    {
+                        Console.WriteLine("Nenhum remédio cadastrado na nuvem.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"❌ Erro ao buscar no banco: {ex.Message}");
+                }
+            }
+            else if (option == "3")
+            {
+                Console.WriteLine("Saindo do sistema...");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("⚠️ Opção inválida!");
+            }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"❌ Erro: {ex.Message}");
-        }
-    }
-    else if (option == "2")
-    {
-        var meds = manager.GetMedications();
-        Console.WriteLine("\n--- Seus Remédios ---");
-        if (meds.Count == 0) Console.WriteLine("Nenhum remédio cadastrado.");
-        foreach (var med in meds) Console.WriteLine($"- {med}");
-    }
-    else if (option == "3")
-    {
-        break;
     }
 }
