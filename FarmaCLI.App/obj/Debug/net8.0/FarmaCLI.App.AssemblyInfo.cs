@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FarmaCLI.App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de09977226d7ea80f73459609c08079404efb9e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56f986192555ac155bc6316e04e3639c92dc64f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("FarmaCLI.App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FarmaCLI.App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
